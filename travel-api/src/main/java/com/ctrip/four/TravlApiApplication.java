@@ -1,0 +1,13 @@
+package com.ctrip.four;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class TravlApiApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(TravlApiApplication.class, args);
+    }
+
+}
