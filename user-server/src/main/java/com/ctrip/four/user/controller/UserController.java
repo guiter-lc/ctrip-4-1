@@ -34,6 +34,13 @@ public class UserController extends BaseController<UserService,UserInfo> {
 //        return deptByPage;
 //    }
 
+
+    @Override
+    @RequestMapping(value = "/user/findListByPage",method = RequestMethod.GET)
+    public PageInfo<UserInfo> findListByPage(@RequestParam("page") int page,@RequestParam("pageSize") int pageSize) {
+        return super.findListByPage(page, pageSize);
+    }
+
     @Override
     @RequestMapping(value = "/user",method = RequestMethod.POST)
     public UserInfo insert(@RequestBody UserInfo userInfo) {

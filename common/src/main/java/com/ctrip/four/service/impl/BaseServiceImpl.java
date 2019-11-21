@@ -2,6 +2,8 @@ package com.ctrip.four.service.impl;
 
 import com.ctrip.four.config.BaseMapper;
 import com.ctrip.four.service.BaseService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -12,6 +14,14 @@ public class BaseServiceImpl<M extends BaseMapper<T>,T> implements BaseService<T
 
     @Autowired
     private M m;
+
+    @Override
+    public PageInfo<T> findListByPage(int page, int pageSize) {
+        PageHelper.startPage(page,pageSize);//分页
+        List<T> depts = m.selectAll();
+        PageInfo<T> deptPageInfo = new PageInfo<>(depts);
+        return deptPageInfo;
+    }
 
     @Override
     public int deleteByPrimaryKey(Object o) {

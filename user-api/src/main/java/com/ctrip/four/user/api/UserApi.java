@@ -23,13 +23,16 @@ public interface UserApi {
 //    @RequestMapping(value = "/Alldept",method = RequestMethod.GET)
 //    public PageInfo<Dept> findDeptByPage(@RequestParam("page") int page, @RequestParam("pageSize") int pageSize);
 
-    @RequestMapping(value = "user",method = RequestMethod.POST)
+    @RequestMapping(value = "/user/findListByPage",method = RequestMethod.GET)
+    public PageInfo<UserInfo> findListByPage(@RequestParam("page") int page,@RequestParam("pageSize") int pageSize);
+
+    @RequestMapping(value = "/user",method = RequestMethod.POST)
     public UserInfo insert(@RequestBody UserInfo userInfo);
 
     @RequestMapping(value = "/user",method = RequestMethod.PUT)
     public UserInfo update(@RequestBody UserInfo userInfo);
 
-    @RequestMapping(value = "user",method = RequestMethod.DELETE)
+    @RequestMapping(value = "/user",method = RequestMethod.DELETE)
     public Boolean delete(@RequestBody UserInfo userInfo);
 
     @RequestMapping(value = "/user",method = RequestMethod.GET)

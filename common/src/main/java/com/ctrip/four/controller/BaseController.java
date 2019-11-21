@@ -2,9 +2,11 @@ package com.ctrip.four.controller;
 
 import com.ctrip.four.config.BaseMapper;
 import com.ctrip.four.service.BaseService;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -12,6 +14,13 @@ public class BaseController<S extends BaseService<T>,T> {
 
     @Autowired
     private S s;
+
+    @RequestMapping(value = "/findListByPage",method = RequestMethod.GET)
+    public PageInfo<T> findListByPage(@RequestParam("page") int page, @RequestParam("pageSize") int pageSize) {
+
+        PageInfo<T> listByPage = s.findListByPage(page, pageSize);
+        return listByPage;
+    }
 
     @RequestMapping(method = RequestMethod.POST)
     public T insert(T t){

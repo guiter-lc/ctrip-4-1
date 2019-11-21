@@ -21,6 +21,12 @@ public class UserApiError implements UserApi {
 //        return userInfo;
 //    }
 //
+
+    @Override
+    public PageInfo<UserInfo> findListByPage(int page, int pageSize) {
+        log.info("进入熔断");
+        return null;
+    }
 //    @Override
 //    public PageInfo<Dept> findDeptByPage(int page, int pageSize) {
 //

@@ -30,6 +30,12 @@ public class AdminController {
 ////        return deptByPage;
 ////    }
 
+    @RequestMapping(value = "/user/findListByPage",method = RequestMethod.GET)
+    public PageInfo<UserInfo> findListByPage(int page, int pageSize) {
+        PageInfo<UserInfo> listByPage = userApi.findListByPage(page, pageSize);
+        return listByPage;
+    }
+
     @RequestMapping(value = "user",method = RequestMethod.POST)
     public UserInfo insert(UserInfo userInfo){
         UserInfo insert = userApi.insert(userInfo);

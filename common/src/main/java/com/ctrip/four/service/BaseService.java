@@ -1,10 +1,13 @@
 package com.ctrip.four.service;
 
+import com.github.pagehelper.PageInfo;
 import org.apache.ibatis.session.RowBounds;
 
 import java.util.List;
 
 public interface BaseService<T> {
+
+    public PageInfo<T> findListByPage(int page, int pageSize);
     
     int deleteByPrimaryKey(Object o);
 
